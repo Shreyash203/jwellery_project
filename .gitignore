@@ -7,3 +7,7 @@ node_modules/
 .next-build/
 
 .next-production/
+
+frontend/out/
+backend/dist/
+backend/legacy-next-routes/

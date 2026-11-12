@@ -1,15 +1,29 @@
 services:
   - type: web
-    name: jwellery-store
+    name: jwellery-backend
     runtime: node
+    rootDir: backend
     plan: free
     buildCommand: npm ci && npm run build
-    startCommand: npm run start
+    startCommand: npm start
     healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
         value: 22.17.0
       - key: DATABASE_URL
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+  - type: web
+    name: jwellery-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: out
+    envVars:
+      - key: NODE_VERSION
+        value: 22.17.0
+      - key: NEXT_PUBLIC_API_URL
         sync: false
       - key: NEXT_PUBLIC_CONTACT_EMAIL
         sync: false
