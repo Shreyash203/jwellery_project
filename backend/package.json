@@ -7,9 +7,10 @@
     "dev": "tsx watch --env-file-if-exists=.env src/server.ts",
     "build": "prisma generate && tsc",
     "start": "node --env-file-if-exists=.env dist/server.js",
-    "test": "tsx --test src/app.test.ts",
+    "test": "tsx --test src/app.test.ts src/products.test.ts",
     "db:push": "prisma db push",
-    "db:generate": "prisma generate"
+    "db:generate": "prisma generate",
+    "test:unit": "tsx --test src/products.test.ts"
   },
   "dependencies": {
     "express": "^5.1.0",
